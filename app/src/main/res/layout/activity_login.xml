@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".LogInActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/black"
+        android:gravity="center_horizontal"
+        android:text="Star wars"
+        android:textColor="@color/white"
+        android:textSize="150px" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="103dp"
+        android:layout_marginLeft="-120dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal"
+        android:text="Log In"
+        android:textSize="60sp" />
+
+    <EditText
+        android:id="@+id/editUsuario"
+        android:layout_width="800px"
+        android:layout_height="50dp"
+        android:layout_marginLeft="-50dp"
+        android:hint="ingresar Usuario"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/editContraseña"
+        android:layout_width="800px"
+        android:layout_height="50dp"
+        android:layout_marginLeft="-50dp"
+        android:layout_marginTop="15dp"
+        android:hint="ingresar Contraseña"
+        android:inputType="textPassword" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="90dp"
+        android:text="Recordar Usuario" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        >
+
+        <Button
+            android:id="@+id/bottonCrearU"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Registrarse"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:backgroundTint="#000000"/>
+
+    </LinearLayout>
+
+        <Button
+            android:id="@+id/bottonIniciarS"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Iniciar secion"
+            android:textSize="28dp"
+            android:backgroundTint="#000000"
+            android:layout_marginTop="220dp"/>
+
+</LinearLayout>
