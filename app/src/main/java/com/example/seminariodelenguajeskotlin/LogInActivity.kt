@@ -31,6 +31,8 @@ class LogInActivity : AppCompatActivity() {
         crearU.setOnClickListener {
             //escribe mensaje en la pantalla
             Toast.makeText(this, "Registrar Usuario", Toast.LENGTH_SHORT).show()
+            var intentMain = Intent(this, RegistrarActivity::class.java)
+            finish()
         }
 
 
@@ -45,6 +47,7 @@ class LogInActivity : AppCompatActivity() {
                 if (check.isChecked) {
                     Toast.makeText(this, "Recordar Usuario", Toast.LENGTH_SHORT).show()
                 }
+                finish()
             }
         }
     }
