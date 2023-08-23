@@ -27,12 +27,14 @@ class LogInActivity : AppCompatActivity() {
         crearU = findViewById(R.id.bottonCrearU)
         check = findViewById(R.id.checkBox)
 
-        //funcion q escucha si el boton se apreto o no
+        var i = 0
+
+       //funcion q escucha si el boton se apreto o no
         crearU.setOnClickListener {
             //escribe mensaje en la pantalla
             Toast.makeText(this, "Registrar Usuario", Toast.LENGTH_SHORT).show()
-            var intentMain = Intent(this, RegistrarActivity::class.java)
-            finish()
+            Intent(this, RegistrarActivity::class.java)
+             i = 1
         }
 
 
@@ -42,13 +44,38 @@ class LogInActivity : AppCompatActivity() {
             if (eContra.text.toString().isEmpty() || eUsuario.text.toString().isEmpty()) {
                 Toast.makeText(this, "Falta el usuario o contraseña", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this, "Datos OK", Toast.LENGTH_SHORT).show()
                 //si el check box fue marcado
                 if (check.isChecked) {
                     Toast.makeText(this, "Recordar Usuario", Toast.LENGTH_SHORT).show()
+                }
+
+                var nom: String? = ""
+                var ape: String? = ""
+                var contra: String? = ""
+
+                //para saber si entro al registrarse
+                if (i==1) {
+                    var bundle: Bundle? = intent.extras
+                    if (bundle != null) {
+                        nom = bundle?.getString("nombre")
+                        ape = bundle?.getString("apellido")
+                        contra = bundle?.getString("contraseña")
+                    }
+                }
+
+                if(eUsuario.text.toString() == nom.toString() && eContra.text.toString()==contra.toString()){
+                    //mandar al main de la pagina donde este la lista o lo q hay q hacer
+
+                        var intentMain = Intent(this, MainActivity::class.java)
+                        intentMain.putExtra("nombre", nom)
+                        intentMain.putExtra("apellido", ape)
+
+                }else{
+                    Toast.makeText(this, "Usuario o contraseña no validos, registrarse por favor", Toast.LENGTH_LONG).show()
+                }
+
                 }
                 finish()
             }
         }
     }
-}
