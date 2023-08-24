@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
+    android:background="@drawable/login"
     tools:context=".LogInActivity">
 
     <TextView
@@ -12,6 +13,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:text="Star wars"
+        android:textColor="@color/white"
         android:textSize="50sp" />
 
     <TextView
@@ -19,6 +21,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:text="Credenciales"
+        android:textColor="@color/white"
         android:textSize="30sp" />
 
     <EditText
@@ -27,6 +30,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:hint="Ingresar Usuario"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
         android:textSize="25dp"
         android:inputType="textEmailAddress" />
 
@@ -36,8 +41,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:hint="Ingresar Contraseña"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
         android:textSize="25sp"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        />
 
     <CheckBox
         android:id="@+id/checkBox"
@@ -45,6 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Recordar Usuario"
+        android:textColor="@color/white"
         android:textSize="30sp"/>
 
     <LinearLayout

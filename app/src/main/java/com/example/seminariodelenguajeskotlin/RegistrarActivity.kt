@@ -9,14 +9,15 @@ import android.widget.Toast
 import org.w3c.dom.Text
 import java.util.Date
 
-lateinit var eNombre : EditText
-lateinit var eApellido : EditText
-lateinit var eNacimiento : EditText
-lateinit var  eContra : EditText
-lateinit var bGuardar: Button
-
 
 class RegistrarActivity : AppCompatActivity() {
+
+    lateinit var eNombre : EditText
+    lateinit var eApellido : EditText
+    lateinit var eNacimiento : EditText
+    lateinit var  eContra : EditText
+    lateinit var bGuardar: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registrar)

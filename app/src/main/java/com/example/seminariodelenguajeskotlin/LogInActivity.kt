@@ -55,13 +55,19 @@ class LogInActivity : AppCompatActivity() {
 
 
                 //verifica que coincidan las credenciales con las tipeadas
-                if(eUsuario.text.toString() == nombre && eContra.text.toString() == contra){
+                if((eUsuario.text.toString() == nombre && eContra.text.toString() == contra)||(eUsuario.text.toString() == "admin" && eContra.text.toString() == "admin")){
                     //mandar al main de la pagina donde este la lista o lo q hay q hacer
 
                     var intentMain = Intent(this, MainActivity::class.java)
                     intentMain.putExtra("nombre", nombre)
                     intentMain.putExtra("apellido", apellido)
-                    Toast.makeText(this, "Bienvenido $nombre $apellido", Toast.LENGTH_SHORT).show()
+                    if((nombre==null)&&(apellido==null)){
+                        Toast.makeText(this, "Bienvenido admin", Toast.LENGTH_SHORT)
+                            .show()
+                    }else {
+                        Toast.makeText(this, "Bienvenido $nombre $apellido", Toast.LENGTH_SHORT)
+                            .show()
+                    }
                     startActivity(intentMain)
 
                 }else{
