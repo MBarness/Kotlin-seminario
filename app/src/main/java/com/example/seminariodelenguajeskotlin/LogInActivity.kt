@@ -27,19 +27,17 @@ class LogInActivity : AppCompatActivity() {
         crearU = findViewById(R.id.bottonCrearU)
         check = findViewById(R.id.checkBox)
 
-        var i = 0
 
        //funcion q escucha si el boton se apreto o no
         crearU.setOnClickListener {
             //escribe mensaje en la pantalla
             Toast.makeText(this, "Registrar Usuario", Toast.LENGTH_SHORT).show()
-            Intent(this, RegistrarActivity::class.java)
-             i = 1
+            val intent = Intent(this, RegistrarActivity::class.java) // crea el Intent
+            startActivity(intent) // inicia la actividad con el Intent
         }
 
 
         iniciarS.setOnClickListener {
-            var nombreUsuario = eUsuario.text.toString()
             //lo q se puso en edir lo castea a texto y string y pregunta si esta vacio
             if (eContra.text.toString().isEmpty() || eUsuario.text.toString().isEmpty()) {
                 Toast.makeText(this, "Falta el usuario o contraseña", Toast.LENGTH_SHORT).show()
@@ -49,33 +47,30 @@ class LogInActivity : AppCompatActivity() {
                     Toast.makeText(this, "Recordar Usuario", Toast.LENGTH_SHORT).show()
                 }
 
-                var nom: String? = ""
-                var ape: String? = ""
-                var contra: String? = ""
+                //envia las credenciales al loginactivity
+                    val bundle = intent.getBundleExtra("datos")
+                    val nombre = bundle?.getString("nombre")
+                    val apellido = bundle?.getString("apellido")
+                    val contra = bundle?.getString("contra")
 
-                //para saber si entro al registrarse
-                if (i==1) {
-                    var bundle: Bundle? = intent.extras
-                    if (bundle != null) {
-                        nom = bundle?.getString("nombre")
-                        ape = bundle?.getString("apellido")
-                        contra = bundle?.getString("contraseña")
-                    }
-                }
 
-                if(eUsuario.text.toString() == nom.toString() && eContra.text.toString()==contra.toString()){
+                //verifica que coincidan las credenciales con las tipeadas
+                if(eUsuario.text.toString() == nombre && eContra.text.toString() == contra){
                     //mandar al main de la pagina donde este la lista o lo q hay q hacer
 
-                        var intentMain = Intent(this, MainActivity::class.java)
-                        intentMain.putExtra("nombre", nom)
-                        intentMain.putExtra("apellido", ape)
+                    var intentMain = Intent(this, MainActivity::class.java)
+                    intentMain.putExtra("nombre", nombre)
+                    intentMain.putExtra("apellido", apellido)
+                    Toast.makeText(this, "Bienvenido $nombre $apellido", Toast.LENGTH_SHORT).show()
+                    startActivity(intentMain)
 
                 }else{
                     Toast.makeText(this, "Usuario o contraseña no validos, registrarse por favor", Toast.LENGTH_LONG).show()
                 }
 
-                }
-                finish()
             }
+
         }
     }
+
+}

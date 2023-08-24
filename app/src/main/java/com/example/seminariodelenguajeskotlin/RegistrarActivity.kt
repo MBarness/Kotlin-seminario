@@ -11,7 +11,7 @@ import java.util.Date
 
 lateinit var eNombre : EditText
 lateinit var eApellido : EditText
-lateinit var eNacimiento : Text
+lateinit var eNacimiento : EditText
 lateinit var  eContra : EditText
 lateinit var bGuardar: Button
 
@@ -23,21 +23,23 @@ class RegistrarActivity : AppCompatActivity() {
 
         eNombre = findViewById(R.id.editNombre)
         eApellido = findViewById(R.id.editApellido)
-        eNacimiento = findViewById(R.id.editFechaNaci)
         eContra = findViewById(R.id.editContraseña)
         bGuardar = findViewById(R.id.bottonGuardarInf)
 
         bGuardar.setOnClickListener{
-            var intentMain = Intent(this, LogInActivity::class.java)
-            Toast.makeText(this, "Se guardaron los datos", Toast.LENGTH_SHORT).show()
-            //manda parametros a la actividad
-            var nombre = eNombre.text.toString()
-            var apellido = eApellido.text.toString()
-            var contra = eContra.text.toString()
 
-            intentMain.putExtra("nombre", nombre)
-            intentMain.putExtra("apellido", apellido)
-            intentMain.putExtra("contraseña", contra)
+            val intent = Intent(this, LogInActivity::class.java)
+
+            val bundle = Bundle()
+
+            bundle.putString("nombre", eNombre.text.toString())
+            bundle.putString("apellido", eApellido.text.toString())
+            bundle.putString("contra", eContra.text.toString())
+
+            intent.putExtra("datos", bundle)
+
+            startActivity(intent)
+
         }
 
 
