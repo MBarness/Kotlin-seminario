@@ -10,4 +10,7 @@ Sin embargo, es importante recordar que Yoda es un personaje único en su especi
 
 En resumen, aunque Yoda no sea técnicamente un Piscis, es innegable que su personaje evoca muchas de las cualidades asociadas con este signo zodiacal. Esto podría ser parte de lo que lo hace tan querido y atemporal tanto en la galaxia de Star Wars como en nuestros corazones terrestres.
     </string>
+
+    <string name="titulo">Mi personaje</string>
+    <string name="boton_listado">listado Personajes</string>
 </resources>

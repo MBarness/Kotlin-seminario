@@ -9,6 +9,11 @@
     android:background="@drawable/signos"
     tools:context=".MainActivity">
 
+
+    <include
+        android:id="@+id/toolBar"
+        layout="@layout/primary_layout"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
