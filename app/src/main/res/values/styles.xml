@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="toolbarMain" parent="Widget.AppCompat.Toolbar">
-        <item name="android:background">@color/gris</item>
+        <item name="android:background">@color/rojo</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:titleTextColor">@color/black</item>
         <item name="android:titleTextAppearance">@style/toolbarMain</item>
+        <item name="android:textSize">21dp</item>
     </style>
 
 

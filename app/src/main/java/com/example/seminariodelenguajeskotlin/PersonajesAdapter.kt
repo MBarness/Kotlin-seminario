@@ -18,12 +18,13 @@ class PersonajesAdapter(var personajes: MutableList<Personaje>, var context : Co
         //A esta posicion de la lista, se le asignan valores,
         val item = personajes.get(position)
 
-        //caso particular par amostrar imagenes en la lista
+        //caso particular par amostrar imagenes en la lista (R.drawable.yoda / en la activity)
         holder.imaPeronaje.setImageResource(item.imagen)
 
         holder.txtNombre.text = item.personaje
         holder.txtSignoZ.text = item.signoZ
-        holder.textRealcion.text = item.relacion
+        //caso particular para mostrar un string de esta manera (ej: R.string.hansolo /en la activity )
+        holder.textRealcion.text = context.getString(item.relacion)
         Toast.makeText(context, item.personaje, Toast.LENGTH_SHORT).show()
     }
 

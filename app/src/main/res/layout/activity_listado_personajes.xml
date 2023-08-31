@@ -5,7 +5,8 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ListadoPersonajes"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/black">
 
     <include
         android:id="@+id/toolBar"

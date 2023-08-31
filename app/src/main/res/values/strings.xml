@@ -12,5 +12,16 @@ En resumen, aunque Yoda no sea técnicamente un Piscis, es innegable que su pers
     </string>
 
     <string name="titulo">Mi personaje</string>
+
+    <string name="yodaa">Yoda, el icónico maestro Jedi de Star Wars, comparte similitudes con el signo zodiacal Piscis. Ambos son emocionales y espirituales, explorando realidades más allá de lo tangible. </string>
+
+    <string name="hansolo">Han Solo, el carismático contrabandista, es un Acuario que valora la libertad y la independencia por encima de todo. Su mentalidad progresista y su deseo de desafiar el statu quo lo convierten en un líder en la Alianza Rebelde.</string>
+
+    <string name="jabba"> El astuto y ambicioso Jabba, nacido bajo el signo de Sagitario, comparte la pasión por la aventura y la búsqueda de nuevas oportunidades. Siempre está dispuesto a explorar nuevos territorios en la galaxia y buscar riquezas.</string>
+
+    <string name="arturo">Arturo, el fiel droide, tiene la determinación y la dedicación características de un Capricornio. Su lealtad inquebrantable y su habilidad para superar obstáculos lo convierten en un aliado invaluable en la lucha contra el Imperio.</string>
+
     <string name="boton_listado">listado Personajes</string>
+    <string name="CerrarS">Cerrar sesion</string>
+    <string name="boton_agregar">Agregar Personaje</string>
 </resources>

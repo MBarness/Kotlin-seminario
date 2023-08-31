@@ -20,6 +20,10 @@ class LogInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+
+
+
+
         //vincular variable con id correspondiente
         eUsuario = findViewById(R.id.editUsuario)
         eContra = findViewById(R.id.editContraseña)
