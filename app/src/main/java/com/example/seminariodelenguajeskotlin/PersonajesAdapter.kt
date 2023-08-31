@@ -17,7 +17,10 @@ class PersonajesAdapter(var personajes: MutableList<Personaje>, var context : Co
     override fun onBindViewHolder(holder: PersonajeViewHolder, position: Int) {
         //A esta posicion de la lista, se le asignan valores,
         val item = personajes.get(position)
-        holder.imaPeronaje = item.imagen
+
+        //caso particular par amostrar imagenes en la lista
+        holder.imaPeronaje.setImageResource(item.imagen)
+
         holder.txtNombre.text = item.personaje
         holder.txtSignoZ.text = item.signoZ
         holder.textRealcion.text = item.relacion

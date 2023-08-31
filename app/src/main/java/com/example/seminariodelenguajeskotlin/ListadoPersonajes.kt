@@ -29,11 +29,11 @@ class ListadoPersonajes : AppCompatActivity() {
 
     private fun getPersonajes(): MutableList<Personaje> {
         var personajes : MutableList<Personaje> = ArrayList()
-        val imagenYoda = ImageView(this)
-        imagenYoda.setImageResource(R.drawable.yoda)
 
-        personajes.add(Personaje(1, imagenYoda, "Yoda", "piscis", "relacion" ))
-        personajes.add(Personaje(2, imagenYoda, "Yoda", "piscis", "relacion" ))
+        personajes.add(Personaje(1, R.drawable.yoda, "Yoda", "Piscis", "relacion" ))
+        personajes.add(Personaje(2, R.drawable.hansolo, "Han solo", "Acuario", "relacion" ))
+        personajes.add(Personaje(2, R.drawable.arturo, "Arturo", "capricornio", "relacion" ))
+        personajes.add(Personaje(2, R.drawable.jabba, "Jabba", "Sagitario", "relacion" ))
 
         return personajes
     }
