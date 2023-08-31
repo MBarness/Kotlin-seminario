@@ -12,7 +12,8 @@
 
     <include
         android:id="@+id/toolBar"
-        layout="@layout/primary_layout"/>
+        layout="@layout/primary_layout"
+        />
 
     <TextView
         android:layout_width="wrap_content"
