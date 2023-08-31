@@ -15,7 +15,9 @@ class ListadoPersonajes : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_listado_personajes)
 
+        //carga la lista
         rvPersonajes = findViewById(R.id.rcListadoPersonajes)
+        //vincula con el adapter
         personajesAdapter = PersonajesAdapter(getPersonajes(),this)
         rvPersonajes.adapter = personajesAdapter
 
@@ -29,7 +31,10 @@ class ListadoPersonajes : AppCompatActivity() {
         var personajes : MutableList<Personaje> = ArrayList()
         val imagenYoda = ImageView(this)
         imagenYoda.setImageResource(R.drawable.yoda)
-        personajes.add(Personaje(1, imagenYoda, "Yoda", "piscis", "relacion"  ))
+
+        personajes.add(Personaje(1, imagenYoda, "Yoda", "piscis", "relacion" ))
+        personajes.add(Personaje(2, imagenYoda, "Yoda", "piscis", "relacion" ))
+
         return personajes
     }
 }
