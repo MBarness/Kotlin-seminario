@@ -19,7 +19,17 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar!!.title = resources.getString(R.string.titulo)
 
+        saudarUsuario()
 
+    }
+
+    private fun saudarUsuario() {
+
+        val bundle : Bundle? = intent.extras
+        if(bundle != null){
+            val nombre = bundle.getString(resources.getString(R.string.nombre_usuario))
+            Toast.makeText(this, "Bienvenido $nombre ", Toast.LENGTH_SHORT).show()
+        }
     }
     //crea las opciones del menu, hacia donde podes ir
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

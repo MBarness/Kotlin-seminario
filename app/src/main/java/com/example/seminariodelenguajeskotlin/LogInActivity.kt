@@ -20,10 +20,6 @@ class LogInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-
-
-
-
         //vincular variable con id correspondiente
         eUsuario = findViewById(R.id.editUsuario)
         eContra = findViewById(R.id.editContraseña)
@@ -31,56 +27,69 @@ class LogInActivity : AppCompatActivity() {
         crearU = findViewById(R.id.bottonCrearU)
         check = findViewById(R.id.checkBox)
 
+        //para despues
 
-       //funcion q escucha si el boton se apreto o no
+        //trae los datos guardados de la base(creo), si es que hay
+        //var preferencias = getSharedPreferences(resources.getString(R.string.sp_credenciales), MODE_PRIVATE)
+        //de la base toma el nombre del usuario y contraseña
+       // var nombreUsuario = preferencias.getString(resources.getString(R.string.nombre_usuario), "")
+       // var contraseña = preferencias.getString(resources.getString(R.string.contraseña), "")
+
+        //si los datos q trae de la base coinciden con los escritos entra
+        //if(nombreUsuario !=null && contraseña !=null){
+        //    startMainActivity(nombreUsuario)
+        //}
+
+        //funcion q escucha si el boton se apreto o no
         crearU.setOnClickListener {
             //escribe mensaje en la pantalla
             Toast.makeText(this, "Registrar Usuario", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, RegistrarActivity::class.java) // crea el Intent
             startActivity(intent) // inicia la actividad con el Intent
+            finish()
         }
 
 
         iniciarS.setOnClickListener {
+
+            var usuario = eUsuario.text.toString()
+            var contra = eUsuario.text.toString()
+
             //lo q se puso en edir lo castea a texto y string y pregunta si esta vacio
-            if (eContra.text.toString().isEmpty() || eUsuario.text.toString().isEmpty()) {
+            if (contra.isEmpty() || usuario.isEmpty()) {
                 Toast.makeText(this, "Falta el usuario o contraseña", Toast.LENGTH_SHORT).show()
             } else {
-                //si el check box fue marcado
-                if (check.isChecked) {
-                    Toast.makeText(this, "Recordar Usuario", Toast.LENGTH_SHORT).show()
-                }
 
-                //envia las credenciales al loginactivity
-                    val bundle = intent.getBundleExtra("datos")
-                    val nombre = bundle?.getString("nombre")
-                    val apellido = bundle?.getString("apellido")
-                    val contra = bundle?.getString("contra")
+                //trae los datos guardados de la base(creo), si es que hay
+                var preferencias = getSharedPreferences(resources.getString(R.string.sp_credenciales), MODE_PRIVATE)
+                //de la base toma el nombre del usuario y contraseña
+                var nombreUsuario = preferencias.getString(resources.getString(R.string.nombre_usuario), "")
+                var contraseña = preferencias.getString(resources.getString(R.string.contraseña), "")
 
-
-                //verifica que coincidan las credenciales con las tipeadas
-                if((eUsuario.text.toString() == nombre && eContra.text.toString() == contra)||(eUsuario.text.toString() == "admin" && eContra.text.toString() == "admin")){
-                    //mandar al main de la pagina donde este la lista o lo q hay q hacer
-
-                    var intentMain = Intent(this, MainActivity::class.java)
-                    intentMain.putExtra("nombre", nombre)
-                    intentMain.putExtra("apellido", apellido)
-                    if((nombre==null)&&(apellido==null)){
-                        Toast.makeText(this, "Bienvenido admin", Toast.LENGTH_SHORT)
-                            .show()
-                    }else {
-                        Toast.makeText(this, "Bienvenido $nombre $apellido", Toast.LENGTH_SHORT)
-                            .show()
-                    }
-                    startActivity(intentMain)
-
-                }else{
+                //si los datos q trae de la base coinciden con los escritos entra
+                if(nombreUsuario == usuario && contraseña == contra){
+                    startMainActivity(nombreUsuario)
+                } else{
                     Toast.makeText(this, "Usuario o contraseña no validos, registrarse por favor", Toast.LENGTH_LONG).show()
                 }
 
+                //si el check box fue marcado se acuerda los datos y si esos datos ya excistian / a chequear como hacer
+                if (check.isChecked) {
+                    Toast.makeText(this, "Recordar Usuario", Toast.LENGTH_SHORT).show()
+                    var preferencias = getSharedPreferences(resources.getString(R.string.sp_credenciales), MODE_PRIVATE)
+                    preferencias.edit().putString(resources.getString(R.string.nombre_usuario), usuario).apply()
+                    preferencias.edit().putString(resources.getString(R.string.contraseña), contra).apply()
+                }
             }
 
         }
+    }
+
+    private fun startMainActivity(usuario: String) {
+        var intentMain = Intent(this, MainActivity::class.java)
+        intentMain.putExtra(resources.getString(R.string.nombre_usuario), usuario)
+        startActivity(intentMain)
+        finish()
     }
 
 }

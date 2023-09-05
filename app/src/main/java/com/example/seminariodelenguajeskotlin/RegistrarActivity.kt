@@ -31,13 +31,13 @@ class RegistrarActivity : AppCompatActivity() {
 
             val intent = Intent(this, LogInActivity::class.java)
 
-            val bundle = Bundle()
+            var nombre = eContra.text.toString()
+            var contra = eContra.text.toString()
 
-            bundle.putString("nombre", eNombre.text.toString())
-            bundle.putString("apellido", eApellido.text.toString())
-            bundle.putString("contra", eContra.text.toString())
+            var preferencias = getSharedPreferences(resources.getString(R.string.sp_credenciales), MODE_PRIVATE)
+            preferencias.edit().putString(resources.getString(R.string.nombre_usuario), nombre).apply()
+            preferencias.edit().putString(resources.getString(R.string.contraseña), contra).apply()
 
-            intent.putExtra("datos", bundle)
 
             startActivity(intent)
 

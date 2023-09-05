@@ -24,4 +24,8 @@ En resumen, aunque Yoda no sea técnicamente un Piscis, es innegable que su pers
     <string name="boton_listado">listado Personajes</string>
     <string name="CerrarS">Cerrar sesion</string>
     <string name="boton_agregar">Agregar Personaje</string>
+
+    <string name="sp_credenciales">SP_CREDENCIALES</string>
+    <string name="contraseña">CONTRASEÑA</string>
+    <string name="nombre_usuario">NOMBRE</string>
 </resources>

@@ -8,7 +8,7 @@ import android.os.Looper
 
 class IntroduccionActivity : AppCompatActivity() {
 
-    private var demora : Long = 3000
+    private var demora : Long = 2000
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_introduccion)
