@@ -55,10 +55,10 @@ class ListadoPersonajes : AppCompatActivity() {
     private fun getPersonajes(): MutableList<Personaje> {
         var personajes : MutableList<Personaje> = ArrayList()
 
-        personajes.add(Personaje(1, R.drawable.yoda, "Yoda", "Piscis", R.string.yodaa ))
-        personajes.add(Personaje(2, R.drawable.hansolo, "Han solo", "Acuario", R.string.hansolo ))
-        personajes.add(Personaje(3, R.drawable.arturo, "Arturo", "capricornio", R.string.arturo ))
-        personajes.add(Personaje(4, R.drawable.jabba, "Jabba", "Sagitario", R.string.jabba ))
+        personajes.add(Personaje(R.drawable.yoda, "Yoda", "Piscis", R.string.yodaa))
+        personajes.add(Personaje(R.drawable.hansolo, "Han solo", "Acuario", R.string.hansolo))
+        personajes.add(Personaje(R.drawable.arturo, "Arturo", "Capricornio", R.string.arturo))
+        personajes.add(Personaje(R.drawable.jabba, "Jabba", "Sagitario", R.string.jabba))
 
         return personajes
     }

@@ -76,9 +76,9 @@ class LogInActivity : AppCompatActivity() {
                 //si el check box fue marcado se acuerda los datos y si esos datos ya excistian / a chequear como hacer
                 if (check.isChecked) {
                     Toast.makeText(this, "Recordar Usuario", Toast.LENGTH_SHORT).show()
-                    var preferencias = getSharedPreferences(resources.getString(R.string.sp_credenciales), MODE_PRIVATE)
-                    preferencias.edit().putString(resources.getString(R.string.nombre_usuario), usuario).apply()
-                    preferencias.edit().putString(resources.getString(R.string.contraseña), contra).apply()
+                    var pref = getSharedPreferences(resources.getString(R.string.sp_credenciales), MODE_PRIVATE)
+                    pref.edit().putString(resources.getString(R.string.nombre_usuario), usuario).apply()
+                    pref.edit().putString(resources.getString(R.string.contraseña), contra).apply()
                 }
             }
 
