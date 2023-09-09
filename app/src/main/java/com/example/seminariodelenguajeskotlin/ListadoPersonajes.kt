@@ -59,7 +59,8 @@ class ListadoPersonajes : AppCompatActivity() {
         personajes.add(Personaje(R.drawable.hansolo, "Han solo", "Acuario", R.string.hansolo))
         personajes.add(Personaje(R.drawable.arturo, "Arturo", "Capricornio", R.string.arturo))
         personajes.add(Personaje(R.drawable.jabba, "Jabba", "Sagitario", R.string.jabba))
-
+        var bdd = AppDataBase.getDataBase(this)
+        personajes.addAll(bdd.personajeDao().getall())
         return personajes
     }
 }

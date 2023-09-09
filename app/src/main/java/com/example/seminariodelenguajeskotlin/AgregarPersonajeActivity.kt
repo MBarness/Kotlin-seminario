@@ -34,15 +34,16 @@ class AgregarPersonajeActivity : AppCompatActivity() {
             var signo = signo.text.toString()
 
             if (nombre.isEmpty() && signo.isEmpty()){
-                Toast.makeText(this, "Datos guardados", Toast.LENGTH_SHORT).show()
-            }else{
                 Toast.makeText(this, "Faltan completar datos", Toast.LENGTH_SHORT).show()
+            }else{
+                //se crea nuevo personaje con el constructor de la data class
+                var nuevoPersonaje = Personaje(R.drawable.incog,nombre,signo, R.string.Relacion)
+            //se llama a la base con el dao q invoca la instruccion de insert q va automatic a la base
+                AppDataBase.getDataBase(this).personajeDao().insertPersonaje(nuevoPersonaje)
+                var intentListado = Intent(this,ListadoPersonajes::class.java)
+                startActivity(intentListado)
             }
-
-
         }
-
-
 
     }
     //invocas el menu

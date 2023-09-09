@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase
 
 
 
-
+//base de datos
 @Database(entities = [Personaje::class], version = 1)
 abstract class AppDataBase:RoomDatabase() {
     abstract fun personajeDao(): PersonajeDao
@@ -28,8 +28,6 @@ abstract class AppDataBase:RoomDatabase() {
                 }
             }
             return INSTANCIA!!
-
-
         }
     }
 }

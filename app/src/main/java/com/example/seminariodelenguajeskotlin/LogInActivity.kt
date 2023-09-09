@@ -27,18 +27,18 @@ class LogInActivity : AppCompatActivity() {
         crearU = findViewById(R.id.bottonCrearU)
         check = findViewById(R.id.checkBox)
 
-        //para despues
+
 
         //trae los datos guardados de la base(creo), si es que hay
-        //var preferencias = getSharedPreferences(resources.getString(R.string.sp_credenciales), MODE_PRIVATE)
+        var preferencias = getSharedPreferences(resources.getString(R.string.sp_credenciales), MODE_PRIVATE)
         //de la base toma el nombre del usuario y contraseña
-       // var nombreUsuario = preferencias.getString(resources.getString(R.string.nombre_usuario), "")
-       // var contraseña = preferencias.getString(resources.getString(R.string.contraseña), "")
+        var nombreUsuario = preferencias.getString(resources.getString(R.string.nombre_usuario), "")
+        var contraseña = preferencias.getString(resources.getString(R.string.contraseña), "")
 
         //si los datos q trae de la base coinciden con los escritos entra
-        //if(nombreUsuario !=null && contraseña !=null){
-        //    startMainActivity(nombreUsuario)
-        //}
+        if(nombreUsuario !=null && contraseña !=null){
+           startMainActivity(nombreUsuario)
+        }
 
         //funcion q escucha si el boton se apreto o no
         crearU.setOnClickListener {
