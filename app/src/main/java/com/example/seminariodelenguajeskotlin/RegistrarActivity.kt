@@ -37,14 +37,7 @@ class RegistrarActivity : AppCompatActivity() {
             var preferencias = getSharedPreferences(resources.getString(R.string.sp_credenciales), MODE_PRIVATE)
             preferencias.edit().putString(resources.getString(R.string.nombre_usuario), nombre).apply()
             preferencias.edit().putString(resources.getString(R.string.contraseña), contra).apply()
-
-
             startActivity(intent)
-
         }
-
-
-
-
     }
 }

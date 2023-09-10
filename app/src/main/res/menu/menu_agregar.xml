@@ -3,7 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/logInBack"
-        android:title="@string/CerrarS"
-        app:showAsAction="never"/>
+        android:id="@+id/backButton"
+        android:title="Volver atrás"
+        android:icon="@drawable/baseline_keyboard_return_24"
+        app:showAsAction="always"/>
+
+
 </menu>

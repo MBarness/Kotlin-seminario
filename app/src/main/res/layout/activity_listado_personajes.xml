@@ -12,6 +12,7 @@
         android:id="@+id/toolBar"
         layout="@layout/primary_layout"/>
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcListadoPersonajes"
         android:layout_width="match_parent"

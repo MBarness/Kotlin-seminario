@@ -34,12 +34,13 @@ class LogInActivity : AppCompatActivity() {
         //de la base toma el nombre del usuario y contraseña
         var nombreUsuario = preferencias.getString(resources.getString(R.string.nombre_usuario), "")
         var contraseña = preferencias.getString(resources.getString(R.string.contraseña), "")
-
+/*
+            SI SE DESCOMENTA ESTO NO SE PUEDE CERRAR SESION, Y SIEMPRE Q SE COMPILE TE VA A MANDAR AL MAIN
         //si los datos q trae de la base coinciden con los escritos entra
         if(nombreUsuario !=null && contraseña !=null){
-           startMainActivity(nombreUsuario)
+            startMainActivity(nombreUsuario)
         }
-
+*/
         //funcion q escucha si el boton se apreto o no
         crearU.setOnClickListener {
             //escribe mensaje en la pantalla
@@ -68,18 +69,18 @@ class LogInActivity : AppCompatActivity() {
 
                 //si los datos q trae de la base coinciden con los escritos entra
                 if(nombreUsuario == usuario && contraseña == contra){
+                    if (check.isChecked) {
+                        Toast.makeText(this, "Recordar Usuario", Toast.LENGTH_SHORT).show()
+                        var pref = getSharedPreferences(resources.getString(R.string.sp_credenciales), MODE_PRIVATE)
+                        pref.edit().putString(resources.getString(R.string.nombre_usuario), usuario).apply()
+                        pref.edit().putString(resources.getString(R.string.contraseña), contra).apply()
+                    }
                     startMainActivity(nombreUsuario)
                 } else{
                     Toast.makeText(this, "Usuario o contraseña no validos, registrarse por favor", Toast.LENGTH_LONG).show()
                 }
 
                 //si el check box fue marcado se acuerda los datos y si esos datos ya excistian / a chequear como hacer
-                if (check.isChecked) {
-                    Toast.makeText(this, "Recordar Usuario", Toast.LENGTH_SHORT).show()
-                    var pref = getSharedPreferences(resources.getString(R.string.sp_credenciales), MODE_PRIVATE)
-                    pref.edit().putString(resources.getString(R.string.nombre_usuario), usuario).apply()
-                    pref.edit().putString(resources.getString(R.string.contraseña), contra).apply()
-                }
             }
 
         }

@@ -55,10 +55,10 @@ class AgregarPersonajeActivity : AppCompatActivity() {
 
     // con un if, segun el id tocado te manda a esa pagina/activity
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId == R.id.logInBack){
-            val intentLogIn = Intent(this, LogInActivity::class.java)
+        if(item.itemId == R.id.backButton){
+            val intentLogIn = Intent(this, ListadoPersonajes::class.java)
             startActivity(intentLogIn)
-            Toast.makeText(this, "Cerrando sesion", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Regresando", Toast.LENGTH_SHORT).show()
             finish()
         }
 

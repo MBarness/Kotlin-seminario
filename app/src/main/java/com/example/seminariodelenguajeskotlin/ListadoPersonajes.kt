@@ -43,10 +43,10 @@ class ListadoPersonajes : AppCompatActivity() {
             startActivity(intentAgregar)
             finish()
         }
-        if(item.itemId == R.id.logInBack){
-            val intentLogIn = Intent(this, LogInActivity::class.java)
+        if(item.itemId == R.id.backButton){
+            val intentLogIn = Intent(this, MainActivity::class.java)
             startActivity(intentLogIn)
-            Toast.makeText(this, "Cerrando sesion", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Regresando al inicio", Toast.LENGTH_SHORT).show()
             finish()
         }
 
