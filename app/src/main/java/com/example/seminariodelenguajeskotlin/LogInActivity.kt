@@ -54,7 +54,7 @@ class LogInActivity : AppCompatActivity() {
         iniciarS.setOnClickListener {
 
             var usuario = eUsuario.text.toString()
-            var contra = eUsuario.text.toString()
+            var contra = eContra.text.toString()
 
             //lo q se puso en edir lo castea a texto y string y pregunta si esta vacio
             if (contra.isEmpty() || usuario.isEmpty()) {
@@ -72,8 +72,8 @@ class LogInActivity : AppCompatActivity() {
                     if (check.isChecked) {
                         Toast.makeText(this, "Recordar Usuario", Toast.LENGTH_SHORT).show()
                         var pref = getSharedPreferences(resources.getString(R.string.sp_credenciales), MODE_PRIVATE)
-                        pref.edit().putString(resources.getString(R.string.nombre_usuario), usuario).apply()
-                        pref.edit().putString(resources.getString(R.string.contraseña), contra).apply()
+                        preferencias.edit().putString(resources.getString(R.string.nombre_usuario), usuario).apply()
+                        preferencias.edit().putString(resources.getString(R.string.contraseña), contra).apply()
                     }
                     startMainActivity(nombreUsuario)
                 } else{
