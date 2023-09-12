@@ -61,21 +61,18 @@ class LogInActivity : AppCompatActivity() {
                 Toast.makeText(this, "Falta el usuario o contraseña", Toast.LENGTH_SHORT).show()
             } else {
 
-                //trae los datos guardados de la base(creo), si es que hay
-                var preferencias = getSharedPreferences(resources.getString(R.string.sp_credenciales), MODE_PRIVATE)
-                //de la base toma el nombre del usuario y contraseña
-                var nombreUsuario = preferencias.getString(resources.getString(R.string.nombre_usuario), "")
-                var contraseña = preferencias.getString(resources.getString(R.string.contraseña), "")
+                //se busca el usuario en la base de datos
+                val usuarioEncontrado = AppUsersDataBase.getUserDatabase(this).usuarioDao.getUsuario(usuario, contra)
 
-                //si los datos q trae de la base coinciden con los escritos entra
-                if(nombreUsuario == usuario && contraseña == contra){
+                //si el usuario existe en la base de datos entra
+                if(usuarioEncontrado != null){
                     if (check.isChecked) {
                         Toast.makeText(this, "Recordar Usuario", Toast.LENGTH_SHORT).show()
                         var pref = getSharedPreferences(resources.getString(R.string.sp_credenciales), MODE_PRIVATE)
                         preferencias.edit().putString(resources.getString(R.string.nombre_usuario), usuario).apply()
                         preferencias.edit().putString(resources.getString(R.string.contraseña), contra).apply()
                     }
-                    startMainActivity(nombreUsuario)
+                    startMainActivity(usuario)
                 } else{
                     Toast.makeText(this, "Usuario o contraseña no validos, registrarse por favor", Toast.LENGTH_LONG).show()
                 }
@@ -84,6 +81,7 @@ class LogInActivity : AppCompatActivity() {
             }
 
         }
+
     }
 
     private fun startMainActivity(usuario: String) {

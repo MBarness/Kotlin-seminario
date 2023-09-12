@@ -14,5 +14,7 @@ interface UsuarioDao {
     @Insert
     fun insertUsuario(usuario: Usuario)
 
+    @Query("SELECT * FROM usuarios_table WHERE nombre = :nombre AND contra = :contra")
+    fun getUsuario(nombre: String, contra: String): Usuario?
 }
 
