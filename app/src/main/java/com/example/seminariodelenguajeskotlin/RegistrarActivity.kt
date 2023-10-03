@@ -55,7 +55,7 @@ class RegistrarActivity : AppCompatActivity() {
     //invocas el menu
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         //formato del menu, las opciones
-        menuInflater.inflate(R.menu.menu_agregar , menu)
+        menuInflater.inflate(R.menu.menu_main , menu)
         return super.onCreateOptionsMenu(menu)
     }
 
