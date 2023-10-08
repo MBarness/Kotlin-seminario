@@ -7,7 +7,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 object RetroFitClient {
 
-    private val baseURL= "https://swapi.dev/api/people"
+    private val baseURL= "https://swapi.dev/api/" // Cambiamos la URL base a la correcta
     private val moshi = Moshi.Builder()
         .addLast(KotlinJsonAdapterFactory())
         .build()
