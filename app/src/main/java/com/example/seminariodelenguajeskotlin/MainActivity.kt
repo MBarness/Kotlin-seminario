@@ -21,6 +21,7 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity() {
     lateinit var tvServicioRest: TextView
     lateinit var toolbar: Toolbar
+    //personajes para seleccionargit status
     val signos = mapOf(
         "Acuario" to 10, // Obi-Wan Kenobi
         "Piscis" to 20, // Yoda
