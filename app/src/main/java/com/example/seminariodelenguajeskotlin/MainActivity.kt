@@ -64,9 +64,11 @@ class MainActivity : AppCompatActivity() {
                     override fun onResponse(call: Call<Post>, response: Response<Post>) {
                         val post = response.body()
                         if (post != null) {
-                            tvServicioRest = findViewById(R.id.tvServicioRest)
-                            tvServicioRest.text = "Nombre: ${post.name}"
                             // Asigna otros detalles a los TextView adicionales
+                            val tvServicioRest = findViewById<TextView>(R.id.tvServicioRest)
+                            tvServicioRest.text = "Nombre: ${post.name}"
+
+
                             val tvBirthYear = findViewById<TextView>(R.id.tvBirthYear)
                             tvBirthYear.text = "Año de Nacimiento: ${post.birth_year}"
 
