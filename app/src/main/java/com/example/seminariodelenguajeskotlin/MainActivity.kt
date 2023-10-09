@@ -20,22 +20,26 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     lateinit var tvServicioRest: TextView
+    lateinit var tvBirthYear: TextView
+    lateinit var tvEyeColor: TextView
+    lateinit var tvGender: TextView
     lateinit var toolbar: Toolbar
     //personajes para seleccionargit status
     val signos = mapOf(
-        "Acuario" to 10, // Obi-Wan Kenobi
-        "Piscis" to 20, // Yoda
-        "Aries" to 5, // Luke Skywalker
-        "Tauro" to 13, // Chewbacca
-        "Géminis" to 30, // Kylo Ren
-        "Cáncer" to 84, // Finn
+        "Acuario" to 16, // Jabba el Hutt
+        "Piscis" to 4, // Darth Vader
+        "Aries" to 1, // Luke Skywalker
+        "Tauro" to 2, // C3PO
+        "Géminis" to 5, // Princesa Leia
+        "Cáncer" to 11, // Anakin Skywalker
         "Leo" to 14, // Han Solo
-        "Virgo" to 85, // Jyn Erso
-        "Libra" to 85, // Rey
-        "Escorpio" to 4, // Darth Vader
+        "Virgo" to 10, // Obi-Wan Kenobi
+        "Libra" to 20, // Maestro Yoda
+        "Escorpio" to 13, // Chewbacca
         "Sagitario" to 36, // Jar-Jar Binks
-        "Capricornio" to 5 // Princesa Leia
+        "Capricornio" to 25 // Lando Calrissian
     )
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,12 +62,23 @@ class MainActivity : AppCompatActivity() {
                 val callGetPost = api.getPost(id) // Hacemos la llamada a la API pasando el id como argumento
                 callGetPost.enqueue(object : retrofit2.Callback<Post> { // Usamos un callback para obtener la respuesta de forma asíncrona
                     override fun onResponse(call: Call<Post>, response: Response<Post>) {
-                        val post = response.body() // Obtenemos el objeto Post de la respuesta
-                        if (post != null){
+                        val post = response.body()
+                        if (post != null) {
                             tvServicioRest = findViewById(R.id.tvServicioRest)
-                            tvServicioRest.text = post.name // Mostramos el nombre del personaje en el TextView
+                            tvServicioRest.text = "Nombre: ${post.name}"
+                            // Asigna otros detalles a los TextView adicionales
+                            val tvBirthYear = findViewById<TextView>(R.id.tvBirthYear)
+                            tvBirthYear.text = "Año de Nacimiento: ${post.birth_year}"
+
+                            val tvEyeColor = findViewById<TextView>(R.id.tvEyeColor)
+                            tvEyeColor.text = "Color de Ojos: ${post.eye_color}"
+
+                            val tvGender = findViewById<TextView>(R.id.tvGender)
+                            tvGender.text = "Género: ${post.gender}"
+
                             Log.d("Response", post.toString())
                         }
+
                     }
                     override fun onFailure(call: Call<Post>, t: Throwable) {
                         Log.e("Error", t.message ?:" ")
