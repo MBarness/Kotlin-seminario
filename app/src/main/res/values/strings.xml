@@ -31,5 +31,8 @@ En resumen, aunque Yoda no sea técnicamente un Piscis, es innegable que su pers
     <string name="Relacion">Realcion personaje</string>
     <string name="seleccion">Selecciona tu signo</string>
 
+    <string name="notification_channel_id">Registrarse Star Wars</string>
+    <string name="notification_channel_name">Registrarse Star Wars</string>
+    <string name="notification_channel_description">Se a  registrado en la app de Star Wars</string>
 
 </resources>

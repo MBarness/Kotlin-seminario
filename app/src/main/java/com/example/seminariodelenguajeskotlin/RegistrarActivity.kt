@@ -1,6 +1,10 @@
 package com.example.seminariodelenguajeskotlin
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -9,6 +13,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
+import androidx.core.app.NotificationCompat
 import androidx.recyclerview.widget.RecyclerView
 import org.w3c.dom.Text
 import java.util.Date
@@ -34,7 +39,7 @@ class RegistrarActivity : AppCompatActivity() {
 
         bGuardar.setOnClickListener{
 
-            val intent = Intent(this, LogInActivity::class.java)
+
 
             var nombre = eNombre.text.toString()
             var contra = eContra.text.toString()
@@ -49,6 +54,10 @@ class RegistrarActivity : AppCompatActivity() {
             var preferencias = getSharedPreferences(resources.getString(R.string.sp_credenciales), MODE_PRIVATE)
             preferencias.edit().putString(resources.getString(R.string.nombre_usuario), nombre).apply()
             preferencias.edit().putString(resources.getString(R.string.contraseña), contra).apply()
+
+            showNotification()
+
+            val intent = Intent(this, LogInActivity::class.java)
             startActivity(intent)
         }
     }
@@ -65,10 +74,38 @@ class RegistrarActivity : AppCompatActivity() {
             val intentLogIn = Intent(this, LogInActivity::class.java)
             startActivity(intentLogIn)
             Toast.makeText(this, "Regresando", Toast.LENGTH_SHORT).show()
-            finish()
         }
 
         return super.onOptionsItemSelected(item)
     }
+
+    fun showNotification() {
+        val channelId = getString(R.string.notification_channel_id)
+
+        // Crear una notificación
+        val notificationBuilder = NotificationCompat.Builder(this, channelId)
+            .setSmallIcon(R.drawable.intro)
+            .setContentTitle("Star Wars")
+            .setContentText("Se a registrado correctamente.")
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
+        // Obtener el NotificationManager
+        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+        // Si estás utilizando canales de notificación, debes crear el canal antes de mostrar la notificación
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val name = getString(R.string.notification_channel_name)
+            val description = getString(R.string.notification_channel_description)
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val channel = NotificationChannel(channelId, name, importance).apply {
+                this.description = description
+            }
+            notificationManager.createNotificationChannel(channel)
+        }
+        val notificationId = 1
+        // Mostrar la notificación
+        notificationManager.notify(notificationId, notificationBuilder.build())
+    }
+
 }
 

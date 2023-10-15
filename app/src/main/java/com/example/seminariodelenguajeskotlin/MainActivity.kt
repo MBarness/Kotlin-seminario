@@ -15,6 +15,9 @@ import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Response
 
@@ -57,35 +60,46 @@ class MainActivity : AppCompatActivity() {
             if (signos.containsKey(itemSelected)) {
                 Toast.makeText(this, "Signo: $itemSelected", Toast.LENGTH_SHORT).show()
 
-                val id = signos[itemSelected] ?: 1 // Obtenemos el id del personaje asociado al signo o usamos 1 por defecto si no hay coincidencia
-                val api = RetroFitClient.retrofit.create(MyApi::class.java) // Creamos la instancia de la interfaz de la API
-                val callGetPost = api.getPost(id) // Hacemos la llamada a la API pasando el id como argumento
-                callGetPost.enqueue(object : retrofit2.Callback<Post> { // Usamos un callback para obtener la respuesta de forma asíncrona
-                    override fun onResponse(call: Call<Post>, response: Response<Post>) {
-                        val post = response.body()
-                        if (post != null) {
-                            // Asigna otros detalles a los TextView adicionales
-                            val tvServicioRest = findViewById<TextView>(R.id.tvServicioRest)
-                            tvServicioRest.text = "Nombre: ${post.name}"
+                CoroutineScope(Dispatchers.IO).launch {
+                    try {
+                        val id = signos[itemSelected]
+                            ?: 1 // Obtenemos el id del personaje asociado al signo o usamos 1 por defecto si no hay coincidencia
+                        val api =
+                            RetroFitClient.retrofit.create(MyApi::class.java) // Creamos la instancia de la interfaz de la API
+                        val callGetPost =
+                            api.getPost(id) // Hacemos la llamada a la API pasando el id como argumento
+                        callGetPost.enqueue(object :
+                            retrofit2.Callback<Post> { // Usamos un callback para obtener la respuesta de forma asíncrona
+                            override fun onResponse(call: Call<Post>, response: Response<Post>) {
+                                val post = response.body()
+                                if (post != null) {
+                                    // Asigna otros detalles a los TextView adicionales
+                                    val tvServicioRest = findViewById<TextView>(R.id.tvServicioRest)
+                                    tvServicioRest.text = "Nombre: ${post.name}"
 
 
-                            val tvBirthYear = findViewById<TextView>(R.id.tvBirthYear)
-                            tvBirthYear.text = "Año de Nacimiento: ${post.birth_year}"
+                                    val tvBirthYear = findViewById<TextView>(R.id.tvBirthYear)
+                                    tvBirthYear.text = "Año de Nacimiento: ${post.birth_year}"
 
-                            val tvEyeColor = findViewById<TextView>(R.id.tvEyeColor)
-                            tvEyeColor.text = "Color de Ojos: ${post.eye_color}"
+                                    val tvEyeColor = findViewById<TextView>(R.id.tvEyeColor)
+                                    tvEyeColor.text = "Color de Ojos: ${post.eye_color}"
 
-                            val tvGender = findViewById<TextView>(R.id.tvGender)
-                            tvGender.text = "Género: ${post.gender}"
+                                    val tvGender = findViewById<TextView>(R.id.tvGender)
+                                    tvGender.text = "Género: ${post.gender}"
 
-                            Log.d("Response", post.toString())
-                        }
+                                    Log.d("Response", post.toString())
+                                }
+                            }
 
+                            override fun onFailure(call: Call<Post>, t: Throwable) {
+                                Log.e("Error", t.message ?: " ")
+                            }
+                        })
+
+                    } catch (e: Exception) {
+                        e.printStackTrace()
                     }
-                    override fun onFailure(call: Call<Post>, t: Throwable) {
-                        Log.e("Error", t.message ?:" ")
-                    }
-                })
+                }
             } else {
                 // Manejar el caso en el que el signo no existe en el mapa
                 Toast.makeText(this, "Signo no válido: $itemSelected", Toast.LENGTH_SHORT).show()

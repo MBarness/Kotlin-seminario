@@ -8,6 +8,8 @@
     android:padding="16dp"
     android:focusableInTouchMode="true"
     tools:context=".MainActivity">
+
+
     <include
         android:id="@+id/toolBar"
         layout="@layout/primary_layout"/>
