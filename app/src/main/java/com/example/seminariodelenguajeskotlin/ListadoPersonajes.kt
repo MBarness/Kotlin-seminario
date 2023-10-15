@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class ListadoPersonajes : AppCompatActivity() {
     lateinit var rvPersonajes: RecyclerView
-    lateinit var personajesAdapter : PersonajesAdapter
+    lateinit var personajesAdapter : PersonajeAdapter
     lateinit var toolbar: Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,7 +21,7 @@ class ListadoPersonajes : AppCompatActivity() {
         //carga la lista
         rvPersonajes = findViewById(R.id.rcListadoPersonajes)
         //vincula con el adapter
-        personajesAdapter = PersonajesAdapter(getPersonajes(),this)
+        personajesAdapter = PersonajeAdapter(this, getPersonajes())
         rvPersonajes.adapter = personajesAdapter
 
         toolbar = findViewById(R.id.toolBar)
@@ -38,11 +38,6 @@ class ListadoPersonajes : AppCompatActivity() {
 
     // con un if, segun el id tocado te manda a esa pagina/activity
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId == R.id.itemAgregar){
-            val intentAgregar = Intent(this, AgregarPersonajeActivity::class.java)
-            startActivity(intentAgregar)
-            finish()
-        }
         if(item.itemId == R.id.backButton){
             val intentLogIn = Intent(this, MainActivity::class.java)
             startActivity(intentLogIn)
