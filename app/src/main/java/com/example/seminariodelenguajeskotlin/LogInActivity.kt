@@ -34,13 +34,13 @@ class LogInActivity : AppCompatActivity() {
         //de la base toma el nombre del usuario y contraseña
         var nombreUsuario = preferencias.getString(resources.getString(R.string.nombre_usuario), "")
         var contraseña = preferencias.getString(resources.getString(R.string.contraseña), "")
-/*
-            SI SE DESCOMENTA ESTO NO SE PUEDE CERRAR SESION, Y SIEMPRE Q SE COMPILE TE VA A MANDAR AL MAIN
+
+           // SI SE DESCOMENTA ESTO NO SE PUEDE CERRAR SESION, Y SIEMPRE Q SE COMPILE TE VA A MANDAR AL MAIN
         //si los datos q trae de la base coinciden con los escritos entra
-        if(nombreUsuario !=null && contraseña !=null){
-            startMainActivity(nombreUsuario)
+       if(nombreUsuario !=null && contraseña !=null){
+           startMainActivity(nombreUsuario)
         }
-*/
+
         //funcion q escucha si el boton se apreto o no
         crearU.setOnClickListener {
             //escribe mensaje en la pantalla
